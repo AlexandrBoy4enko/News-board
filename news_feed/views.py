@@ -1,12 +1,17 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, DestroyModelMixin, CreateModelMixin, \
+    UpdateModelMixin
+from rest_framework.viewsets import GenericViewSet
 
 from news_feed.models import Article
 from news_feed.serializers import ArticleSerializer
 
 
-class ArticleViewSet(ModelViewSet):
+class ArticleViewSet(ListModelMixin,
+                     RetrieveModelMixin,
+                     CreateModelMixin,
+                     UpdateModelMixin,
+                     DestroyModelMixin,
+                     GenericViewSet):
+
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-
-    def get(self):
-        return self.get_queryset()
