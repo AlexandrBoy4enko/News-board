@@ -1,8 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 
-from store.models import news
-from store.serializers import newssSerializer
+from store.models import Article
+from store.serializers import ArticleSerializer
 
-class newsViewSet(ModelViewSet):
-    queryset = news.objects.all()
-    serializer_class = newssSerializer
+
+class ArticleViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+    def get(self):
+        return self.get_queryset()

@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
-from store.views import newsViewSet
+from store.views import ArticleViewSet
 
-router=SimpleRouter()
+router = SimpleRouter()
 
-router.register(r'news', newsViewSet)
+router.register(r'news', ArticleViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-urlpatterns+=router.urls
+urlpatterns += router.urls

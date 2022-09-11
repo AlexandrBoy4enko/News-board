@@ -1,6 +1,6 @@
 from django.db import models
 
 
-class news(models.Model):
+class Article(models.Model):
     name = models.CharField(max_length=255)
-    prise = models.DecimalField(max_digits=7, decimal_places=2)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
