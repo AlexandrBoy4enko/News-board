@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
-from store.models import Article
-from store.serializers import ArticleSerializer
+from news_feed.models import Article
+from news_feed.serializers import ArticleSerializer
 
 
 class ArticleViewSet(ModelViewSet):
