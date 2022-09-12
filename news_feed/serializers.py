@@ -11,11 +11,19 @@ class ArticleSerializer(ModelSerializer):
 
     author = CharField(source="author.name")
 
+    def create(self, validated_data):
+        author, _ = Author.objects.get_or_create(name=validated_data['author']['name'])
+        instance = Article.objects.create(
+            pub_date=validated_data['pub_date'],
+            author=author,
+            heading=validated_data['heading'],
+            content=validated_data['content']
+        )
+        instance.save()
+        return instance
+
 
 class AuthorSerializer(ModelSerializer):
     class Meta:
         model = Author
         fields = ['name', ]
-
-    def __repr__(self):
-        return f"#{self.id} {self.name}"

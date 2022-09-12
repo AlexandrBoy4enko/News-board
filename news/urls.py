@@ -25,7 +25,6 @@ router.register(r'news', ArticleViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('news_feed/', ArticleViewSet.as_view({'get': 'list'}), name='news-feed'),
 ]
 
 urlpatterns += router.urls
